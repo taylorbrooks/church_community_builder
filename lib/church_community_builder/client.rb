@@ -9,7 +9,6 @@ Dir[File.expand_path('../response/*.rb', __FILE__)].each{|f| require f}
 module ChurchCommunityBuilder
   class Client
     include ChurchCommunityBuilder::Client::Contribution
-    include ChurchCommunityBuilder::Client::Fund
     include ChurchCommunityBuilder::Client::Person
 
     attr_reader :subdomain, :username, :password

@@ -1,1 +1,1 @@
-require_relative 'church_commmunity_builder/client'
+require_relative 'church_community_builder/client'
