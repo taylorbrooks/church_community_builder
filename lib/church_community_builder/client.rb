@@ -29,6 +29,7 @@ module ChurchCommunityBuilder
     def post(path)
       connection.post do |req|
         req.url(path)
+        req.headers["content/type"] = "application/x-www-form-urlencoded"
       end.body
     end
 
