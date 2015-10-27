@@ -19,38 +19,17 @@ module ChurchCommunityBuilder
       @password  = password
     end
 
-    def get(path, options={})
+    def get(path)
       connection.get do |req|
-        req.url(path, options)
+        req.url(path)
       end.body
     end
 
-    def post(path, req_body)
+    def post(path)
       connection.post do |req|
         req.url(path)
-        req.body = req_body
       end.body
     end
-
-    def put(path, req_body)
-      connection.put do |req|
-        req.url path
-        req.body = req_body
-      end
-    end
-
-    def delete(path, options = {})
-      connection.delete do |req|
-        req.url path
-      end.body
-    end
-
-    def save
-      connection.put do |req|
-        req.url path
-      end.body
-    end
-
 
     private
 
