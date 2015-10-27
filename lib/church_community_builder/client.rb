@@ -51,11 +51,6 @@ module ChurchCommunityBuilder
       end.body
     end
 
-    def to_url(hash)
-      hash.collect do |key,val|
-        "#{CGI.escape(key.to_s)}=#{CGI.escape(val)}"
-      end.join('&')
-    end
 
     private
 
@@ -68,5 +63,13 @@ module ChurchCommunityBuilder
       end
     end
 
+  end
+end
+
+class Hash
+  def to_url
+    self.collect do |key,val|
+      "#{CGI.escape(key.to_s)}=#{val}"
+    end.join('&')
   end
 end
