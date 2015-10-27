@@ -3,7 +3,7 @@ require "base64"
 
 Gem::Specification.new do |s|
   s.name              = "church_community_builder"
-  s.version           = "0.0.6"
+  s.version           = "0.0.7"
   s.authors           = ['Taylor Brooks']
   s.email             = ["dGJyb29rc0BnbWFpbC5jb20="].map{ |e| Base64.decode64(e) }
   s.homepage          = "https://github.com/taylorbrooks/church_community_builder"
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "faraday"
   s.add_runtime_dependency "faraday_middleware"
   s.add_runtime_dependency "multi_xml"
+  s.add_runtime_dependency "addressable"
 
   s.files         = `git ls-files`.split("\n").delete_if { |f| !(f =~ /^examples/).nil? }
   s.test_files    = `git ls-files -- {test,features}/*`.split("\n")

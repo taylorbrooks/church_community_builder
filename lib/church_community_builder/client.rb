@@ -1,6 +1,7 @@
-require 'faraday'
-require 'faraday_middleware'
-require 'json'
+require "faraday"
+require "faraday_middleware"
+require "addressable/uri"
+require "json"
 
 Dir[File.expand_path('../resources/*.rb', __FILE__)].each{|f| require f}
 Dir[File.expand_path('../response/*.rb', __FILE__)].each{|f| require f}
@@ -42,13 +43,5 @@ module ChurchCommunityBuilder
       end
     end
 
-  end
-end
-
-class Hash
-  def to_url
-    self.collect do |key,val|
-      "#{CGI.escape(key.to_s)}=#{val}"
-    end.join('&')
   end
 end
