@@ -3,7 +3,7 @@ module ChurchCommunityBuilder
     module Person
 
       def create_person(person_params)
-        response = post("?srv=create_individual&#{Addressable::URI.form_encode(person_params)}")
+        response = post("?srv=create_individual", Addressable::URI.form_encode(person_params))
         ::Person.new(response).parse
       end
 
