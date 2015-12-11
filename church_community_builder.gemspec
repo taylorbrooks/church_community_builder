@@ -3,7 +3,7 @@ require "base64"
 
 Gem::Specification.new do |s|
   s.name              = "church_community_builder"
-  s.version           = "0.0.9"
+  s.version           = "0.0.10"
   s.authors           = ['Taylor Brooks']
   s.email             = ["dGJyb29rc0BnbWFpbC5jb20="].map{ |e| Base64.decode64(e) }
   s.homepage          = "https://github.com/taylorbrooks/church_community_builder"
