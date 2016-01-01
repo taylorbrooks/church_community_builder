@@ -4,7 +4,7 @@ module ChurchCommunityBuilder
 
       def list_campuses
         response = get("?srv=campus_list")
-        ::Campus.new(response).parse
+        ChurchCommunityBuilder::Campus.new(response).parse
       end
 
     end

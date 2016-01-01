@@ -2,6 +2,7 @@
 
 A Ruby wrapper for the Church Community Builder API (https://support.churchcommunitybuilder.com/customer/portal/articles/640589-api-documentation)
 
+https://designccb.s3.amazonaws.com/helpdesk/files/official_docs/api.html
 
 ## Install / Setup
 
