@@ -21,9 +21,10 @@ module ChurchCommunityBuilder
     def hydrate(person)
       OpenStruct.new(
         id: person["id"],
+        family_id: person["family"]["id"],
         first_name: person["first_name"],
         last_name: person["last_name"],
-        email: person["email"]
+        email: person["email"],
       )
     end
 
