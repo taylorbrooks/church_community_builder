@@ -13,12 +13,13 @@ module ChurchCommunityBuilder
       include resource
     end
 
-    attr_reader :subdomain, :username, :password
+    attr_reader :subdomain, :username, :password, :logger
 
-    def initialize(subdomain, username, password)
+    def initialize(subdomain, username, password, logger = false)
       @subdomain = subdomain
       @username  = username
       @password  = password
+      @logger    = logger
     end
 
     def get(path)
@@ -39,7 +40,7 @@ module ChurchCommunityBuilder
     def connection
       Faraday.new(url: "https://#{subdomain}.ccbchurch.com/api.php") do |connection|
         connection.basic_auth username, password
-        connection.response   :logger
+        connection.response   :logger if logger
         connection.response   :xml
         connection.adapter    Faraday.default_adapter
       end
