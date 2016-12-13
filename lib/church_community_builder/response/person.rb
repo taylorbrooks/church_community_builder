@@ -11,7 +11,7 @@ module ChurchCommunityBuilder
     def parse
       return [] if count == 0
 
-      if count == 1
+      if count == 1 || people["individuals"]["individual"].is_a?(Hash)
         [hydrate(people["individual"])]
       else
         people["individual"].map{|p| hydrate(p) }
