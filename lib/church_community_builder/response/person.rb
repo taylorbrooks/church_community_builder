@@ -9,7 +9,7 @@ module ChurchCommunityBuilder
     end
 
     def parse
-      return [] if count == 0
+      return [] if count == 0 || people["individual"].nil?
 
       if count == 1 || people["individual"].is_a?(Hash)
         [hydrate(people["individual"])]
