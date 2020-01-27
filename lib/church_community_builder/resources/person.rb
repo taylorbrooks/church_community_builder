@@ -13,6 +13,10 @@ module ChurchCommunityBuilder
         ChurchCommunityBuilder::Person.new(response).parse
       end
 
+      def search_for_person_by_id(id)
+        response = get("?srv=individual_profile_from_id&individual_id=#{id}")
+        ChurchCommunityBuilder::Person.new(response).parse
+      end
     end
   end
 end
