@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module ChurchCommunityBuilder
   class Client
     module Person
-
       def create_person(person_params)
-        response = post("?srv=create_individual", Addressable::URI.form_encode(person_params))
+        response = post('?srv=create_individual', Addressable::URI.form_encode(person_params))
         ChurchCommunityBuilder::Person.new(response).parse
       end
 

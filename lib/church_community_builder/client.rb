@@ -1,11 +1,12 @@
-require "faraday"
-require "faraday_middleware"
-require "addressable/uri"
-require "json"
+# frozen_string_literal: true
 
-Dir[File.expand_path('../resources/*.rb', __FILE__)].each{|f| require f}
-Dir[File.expand_path('../response/*.rb', __FILE__)].each{|f| require f}
+require 'faraday'
+require 'faraday_middleware'
+require 'addressable/uri'
+require 'json'
 
+Dir[File.expand_path('../resources/*.rb', __FILE__)].each { |f| require f }
+Dir[File.expand_path('../response/*.rb', __FILE__)].each { |f| require f }
 
 module ChurchCommunityBuilder
   class Client
@@ -22,29 +23,25 @@ module ChurchCommunityBuilder
       @logger    = logger
     end
 
-    def get(path)
-      connection.get do |req|
-        req.url(path)
-      end.body
+    def get(path, options = {})
+      connection.get(path, options).body
     end
 
-    def post(path, body)
-      connection.post do |req|
-        req.url(path)
-        req.body = body if body
-      end.body
+    def post(path, options = {})
+      res = connection.post(path, options).body
+      res
     end
 
     private
 
     def connection
-      Faraday.new(url: "https://#{subdomain}.ccbchurch.com/api.php") do |connection|
-        connection.basic_auth username, password
-        connection.response   :logger if logger
-        connection.response   :xml
-        connection.adapter    Faraday.default_adapter
+      Faraday.new(url: "https://#{subdomain}.ccbchurch.com/api.php") do |conn|
+        conn.basic_auth username, password
+        conn.response   :logger if logger
+        conn.response   :xml
+        conn.use FaradayMiddleware::ChurchCommunityBuilderErrorHandler
+        conn.adapter Faraday.default_adapter
       end
     end
-
   end
 end
