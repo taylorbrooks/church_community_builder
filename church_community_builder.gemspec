@@ -22,9 +22,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'webmock'
 
   s.add_runtime_dependency 'addressable'
-  s.add_runtime_dependency 'faraday'
-  s.add_runtime_dependency 'faraday_middleware'
-  s.add_runtime_dependency 'multi_xml'
+  s.add_runtime_dependency 'faraday', '> 2.0'
+  s.add_runtime_dependency 'faraday-decode_xml'
 
   s.files         = `git ls-files`.split($/)
   s.test_files    = s.files.grep(%r{^(test)/})

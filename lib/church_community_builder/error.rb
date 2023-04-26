@@ -6,7 +6,7 @@ end
 
 require 'faraday'
 module FaradayMiddleware
-  class ChurchCommunityBuilderErrorHandler < Faraday::Response::Middleware
+  class ChurchCommunityBuilderErrorHandler < Faraday::Middleware
     ERROR_STATUSES = 400..600
 
     def on_complete(env)
